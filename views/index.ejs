@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <!-- <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"> -->
+  <title>Forma App</title>
+  <style>
+    * {
+      font-family: 'Manrope', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .content-table {
+      border-collapse: collapse;
+      margin: 25px 10px;
+      font-size: 0.9em;
+      min-width: 400px;
+      border-radius: 5px 5px 0 0;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .content-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td {
+      padding: 12px 8px;
+    }
+
+    .content-table td {
+      border: 1px solid #00987a74;
+
+    }
+
+    .content-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+      border-radius: 5px 5px 0 0;
+
+    }
+
+    .content-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .content-table tbody tr:last-of-type {
+      border-bottom: 2px solid #009879;
+    }
+
+    .content-table tbody tr:nth-child(n+1) {
+      font-weight: bold;
+      color: #009879;
+    }
+
+    input {
+      /* width: 40px; */
+      max-width: 500px;
+      height: 90%;
+      border: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      color: #009879;
+      outline: none;
+      padding: 10px 5px;
+    }
+
+    .add {
+      margin: 10px 0;
+      padding: 10px 40px;
+      background: #009879;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: .4s ease-in-out;
+    }
+    .primary{
+      margin: 10px 0;
+      padding: 10px 40px;
+      background: #182dee;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: .4s ease-in-out;
+    }
+    .primary:hover{
+      background: #3a4cec;
+      color: #030101;
+    }
+    .add:hover {
+      background-color: #06c59f;
+      color: #030101;
+    }
+
+    .id-table {
+      width: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <table class="content-table">
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>O'qituvchining F.I.SH </th>
+        <th>Telefon</th>
+        <th>Dushanba</th>
+        <th>Seshanba</th>
+        <th>Chorshanba</th>
+        <th>Payshanba</th>
+        <th>Juma</th>
+        <th>Shanba</th>
+        <th>Yakshanba</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%let a = 0;%>
+      <%users.forEach((user, e) => { %>
+      <tr key={user.id}>
+        <td>{user.id}</td>
+        <td>
+          <input type="text" value="{user.name}">
+        </td>
+        <td><input type="text" name="" value="<%=user.phone%>"></td>
+        <td><input type="text" name="" value="<%=user.Monday%>"></td>
+        <td><input type="text" name="" value="<%=user.Tuesday%>"></td>
+        <td><input type="text" name="" value="<%=user.Wednesday%>"></td>
+        <td><input type="text" name="" value="<%=user.Thusday%>"></td>
+        <td><input type="text" name="" value="<%=user.Friday%>"></td>
+        <td><input type="text" name="" value="<%=user.Saturday%>"></td>
+        <td><input type="text" name="" value="<%=user.Sunday%>"></td>
+        <td>action</td>
+      </tr>
+      <%a = e }) %>
+
+<% console.log(a)%>
+
+    </tbody>
+  </table>
+  <button class='add' onclick={this.addItem}>Add User</button><br>
+  <button class='primary' onclick={this.addItem}>Saqlash</button>
+
+  <input type="hidden" id="count" value="<%=a%>">
+  <script>
+    let addButton = document.querySelector('.add');
+    let tbody = document.querySelector('tbody')
+    let a = Number(document.getElementById('count').value)
+    addButton.addEventListener("click", () => {
+      let newTr = document.createElement('tr')
+      newTr.innerHTML = `<tr key={user.id} id="<% user._id %>">
+        <td>${a+1}</td>
+        <td>
+          <input type="text" value="">
+        </td>
+        <td><input type="text" name="phone_${a}" value=""></td>
+        <td><input type="text" name="Monday_${a}" value=""></td>
+        <td><input type="text" name="Tuesday_${a}" value=""></td>
+        <td><input type="text" name="Wednesday_${a}" value=""></td>
+        <td><input type="text" name="Thusday_${a}" value=""></td>
+        <td><input type="text" name="Friday_${a}" value=""></td>
+        <td><input type="text" name="Saturday_${a}" value=""></td>
+        <td><input type="text" name="Sunday_${a}" value=""></td>
+        <td>action</td>
+      </tr>`
+      a++
+      tbody.append(newTr)
+    })
+
+    const sendButton = document.querySelector('.primary');
+
+    sendButton.addEventListener('click', () => {
+      for(let i = 0; i < a; i++){
+        let phone = document.querySelector(`input[name=phone_${i}]`)
+        let Monday = document.querySelector(`input[name=Monday_${i}]`)
+        let Tuesday = document.querySelector(`input[name=Tuesday_${i}]`)
+        let Wednesday = document.querySelector(`input[name=Wednesday_${i}]`)
+        let Thusday = document.querySelector(`input[name=Thusday_${i}]`)
+        let Friday = document.querySelector(`input[name=Friday_${i}]`)
+        let Saturday = document.querySelector(`input[name=Saturday_${i}]`)
+        let Sunday = document.querySelector(`input[name=Sunday_${i}]`)
+      }
+    })
+  </script>
+</body>
+
+</html>
