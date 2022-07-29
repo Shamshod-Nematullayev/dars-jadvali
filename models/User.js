@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    fullname: String,
+    name: String,
     phone: String,
     Monday: String,
     Tuesday: String,
@@ -9,7 +9,8 @@ const schema = mongoose.Schema({
     Thusday: String,
     Friday: String,
     Saturday: String,
-    Sunday: String
+    Sunday: String,
+    order: Number
 })
 
 const User = mongoose.model('user', schema)

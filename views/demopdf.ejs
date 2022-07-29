@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DemoPdf</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+        table{
+            border-spacing: 0;
+            border-color: #000;
+        }
+        table > *{
+            font-size: 12px;
+            text-align: left;
+        }
+        tr td{
+            width: 100px;
+            padding:5px 10px;
+            /* border-right: 1px solid rgba(0, 0, 0); */
+            /* border-bottom: 1px solid rgba(0, 0, 0); */
+        }
+        tr th{
+            width: 100px;
+            padding:8px 5px;
+            background: rgb(174,170,170);
+        }
+        tr td:first-child{
+            /* border-left: 1px solid rgba(0, 0, 0); */
+            width: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        tr td:nth-child(2){
+            font-weight: 700;
+        }
+        tr th:first-child{
+            width: 20px;
+        }
+        footer{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     <table class="table table-striped  table-primary" border="1" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>O'qituvchining F.I.SH </th>
+                <th>Telefon</th>
+                <th>Dushanba</th>
+                <th>Seshanba</th>
+                <th>Chorshanba</th>
+                <th>Payshanba</th>
+                <th>Juma</th>
+                <th>Shanba</th>
+                <th>Yakshanba</th>
+              </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((user, i) => { %> 
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= user.name  %></td>
+                    <td><%=user.phone%></td>
+                    <td><%=user.Monday%></td>
+                    <td><%=user.Tuesday%></td>
+                    <td><%=user.Wednesday%></td>
+                    <td><%=user.Thusday%></td>
+                    <td><%=user.Friday%></td>
+                    <td><%=user.Saturday%></td>
+                    <td><%=user.Sunday%></td>
+                  </tr>
+
+            <% }) %> 
+        </tbody>
+     </table>
+     <footer><i>powered by <a href="https://t.me/oliy_ong">OLIY ONG</a></i></footer>
+</body>
+</html>
